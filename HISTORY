@@ -1,0 +1,30 @@
+VR ProtoShop Change History
+===========================
+
+VR ProtoShop 3.0:
+- Beginning of history file
+
+VR ProtoShop 3.1:
+- Adapted to Vrui-2.1
+
+VR ProtoShop 4.0:
+- Bumped Vrui requirement to version 7.0-001
+- Replaced standalone collaboration server with plugin for the Vrui
+  Collaboration Infrastructure
+- Require Vrui Collaboration Infrastructure, version 4.1 or newer
+
+VR ProtoShop 4.1:
+- Bumped Vrui version requirement to 8.0-001
+- Updated to new Vrui build system
+- Bumped Vrui Collaboration Infrastructure version requirement to 5.0
+- Updated to Collab namespace
+- Removed a bunch of minor annoying warnings.
+
+VR ProtoShop 4.2:
+- Bumped Vrui version requirement to 9.0-001
+
+VR ProtoShop 4.3:
+- Bumped Vrui version requirement to 12.0-001
+- Fixed wrong message structure type in
+  ProtoShopServer::ikUpdateRequestCallback.
+- Added residue selection and display dialog.

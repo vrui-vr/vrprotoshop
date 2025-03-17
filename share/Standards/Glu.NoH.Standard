@@ -1,0 +1,10 @@
+HEADER                                                                  ROTA   0
+ATOM      1 N    GLU     1       1.378   0.000  -0.512  0.00  0.00      ROTA   1
+ATOM      2 CA   GLU     1       0.000   0.000   0.000  0.00  0.00      ROTA   2
+ATOM      4 C    GLU     1      -0.773   1.196  -0.547  0.00  0.00      ROTA   4
+ATOM      5 O    GLU     1      -1.466   2.003   0.124  0.00  0.00      ROTA   5
+ATOM      6 CB   GLU     1       0.000   0.000   1.525  0.00  0.00      ROTA   6
+ATOM      9 CG   GLU     1      -1.394   0.000   2.131  0.00  0.00      ROTA   9
+ATOM     12 CD   GLU     1      -1.394   0.000   3.651  0.00  0.00      ROTA  12
+ATOM     13 OE1  GLU     1      -0.320   0.000   4.271  0.00  0.00      ROTA  13
+ATOM     14 OE2  GLU     1      -2.464   0.089   4.271  0.00  0.00      ROTA  14

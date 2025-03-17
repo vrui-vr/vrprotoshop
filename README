@@ -1,0 +1,112 @@
+========================================================================
+README for VR ProtoShop version 4.3
+Copyright (c) 2010-2024 Oliver Kreylos
+========================================================================
+
+Overview
+========
+
+Description
+===========
+
+Requirements
+============
+
+VR ProtoShop requires Vrui version 12.0 build 001 or newer, and the Vrui
+Collaboration Infrastructure version 9.0 or newer.
+
+Installation Guide
+==================
+
+It is recommended to download or move the source packages for Vrui and
+VR ProtoShop into a src directory underneath the user's home directory.
+Otherwise, references to ~/src in the following instructions need to be
+changed.
+
+It is also recommended to skip optional steps 4 and 6 in the following
+instructions. VR ProtoShop does not need to be installed in order to
+be used; installation (to a system directory such as /usr/local) is
+only recommended if VR ProtoShop will be used from multiple user
+accounts.
+
+0.1. Install Vrui from ~/src/Vrui-<version>-<build> (see Vrui README
+     file).
+
+0.2 Install the Vrui Collaboration Infrastructure from
+    ~/src/CollaborationInfrastructure-<version>.
+
+1. Change into ~/src directory and unpack the VR ProtoShop tarball:
+   > cd ~/src
+   > tar xfz <download path>/VRProtoShop-<version>.tar.gz
+   - or -
+   > tar xf <download path>/VRProtoShop-<version>.tar
+
+2. Change into VR ProtoShop base directory:
+   > cd VRProtoShop-<version>
+
+3. If the Vrui version installed in step 0 was not 12.0, or Vrui's
+   installation directory was changed from the default of /usr/local,
+   adapt the makefile using a text editor. Change the value of
+   VRUI_MAKEDIR close to the beginning of the file as follows:
+   VRUI_MAKEDIR := <Vrui install dir>/share/make
+   Where <Vrui install dir> is the installation directory chosen in
+   step 0. Use $(HOME) to refer to the user's home directory instead
+   of ~.
+
+4. Optional: Adapt makefile if VR ProtoShop is to be installed in a
+   different location, for example /usr/local. Set INSTALLDIR to the
+   desired target location. VR ProtoShop will be then be installed in
+   <INSTALLDIR>/bin, its configuration file will be installed in
+   <INSTALLDIR>/etc, and its resources will be installed in
+   <INSTALLDIR>/share/VRProtoShop (where <INSTALLDIR> is the value of
+   INSTALLDIR set in the makefile).
+
+5. Build VR ProtoShop:
+   > make
+   This creates the following executables in ./bin: VRProtoShop.
+
+6. Optional: Install VR ProtoShop in the selected target location.
+   This is only necessary if the INSTALLDIR variable in the makefile
+   was changed. By default, VR ProtoShop can be run from its base
+   directory. To install:
+   > make install
+   - or, if the target location is a system directory -
+   > sudo make install
+   This will copy all executables into <INSTALLDIR>/bin, the
+   ProtoShop.cfg configuration file into <INSTALLDIR>/etc, and the
+   resource files into <INSTALLDIR>/share/VRProtoShop.
+
+7. Optional: Add directory containing the VR ProtoShop executables
+   (~/src/VRProtoShop-<version>/bin in the default installation,
+   <INSTALLDIR>/bin otherwise) to the user's search path. This allows
+   running VR ProtoShop from any directory. Using csh or tcsh:
+   > setenv PATH ${PATH}:~/src/VRProtoShop-<version>/bin
+   - or -
+   > setenv PATH ${PATH}:<INSTALLDIR>/bin
+   where <INSTALLDIR> is the target location set in the makefile.
+   Using bash:
+   > export PATH=${PATH}:~/src/VRProtoShop-<version>/bin
+   - or -
+   > export PATH=${PATH}:<INSTALLDIR>/bin
+   These lines can also be added to the user's .cshrc or .bashrc files
+   to make the additions persist between logins.
+
+Running VR ProtoShop
+====================
+
+These instructions assume that VR ProtoShop was installed in its base
+directory, (see steps 4 and 6 above).
+
+1. On MacOS X: Start X11. VR ProtoShop requires a running X server,
+   but, if preferred, it can be started from a MacOS X terminal instead
+   of xterm.
+
+2. See Vrui's documentation on Vrui's basic user interface.
+
+3. VR ProtoShop uses locator tools to select secondary protein
+   structures for interaction or toggle coil regions for inverse
+   kinematics updates. Locator tool behavior is selected via the
+   interaction dialog.
+
+4. VR ProtoShop uses dragging tools to drag selected secondary protein
+   structures.

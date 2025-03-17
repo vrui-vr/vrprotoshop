@@ -1,0 +1,37 @@
+set atom_model = explicit
+read vdw_radii Radii:vdw_radii.dat
+
+read protein Ile.New.AllH.Standard as Ile
+delete protons Ile
+set length CA N = 1.43
+set length CA C = 1.49
+drag atom O
+set length C O = 1.23
+set length CA CB = 1.5
+drag atoms CG1
+set length CB CG1 = 1.538
+drag atom CD1
+set length CB CG2 = 1.538
+set length CG1 CD1 = 1.528
+
+set angle CA C O = 121
+set angle N CA C = 107
+drag atom O
+set angle CB CA N = 113.5
+set angle CB CA C = 108
+drag atom O
+set angle CA CB CG1 = 111.0
+drag atom CD1
+set angle CA CB CG2 = 108.5
+set angle CB CG1 CD1 = 113.5
+
+select Ile:$start
+write protein Ile.NoH.Standard 'ILES'
+
+grid on
+hydrogenate molecule
+delete atom HT2
+rename atom HT1 H
+select Ile:$start
+write protein Ile.AllH.Standard 'ILES'
+end

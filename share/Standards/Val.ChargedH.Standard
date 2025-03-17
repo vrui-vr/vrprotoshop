@@ -1,0 +1,9 @@
+HEADER                                                                  VALH   0
+ATOM      1 N    VAL     1       1.295   0.000  -0.562  0.00  0.00      VALH   1
+ATOM      2 H    VAL     1       1.623  -0.832  -0.114  0.00  0.00      VALH   2
+ATOM      3 CA   VAL     1       0.000   0.000   0.000  0.00  0.00      VALH   3
+ATOM      4 C    VAL     1      -0.803   1.208  -0.508  0.00  0.00      VALH   4
+ATOM      5 O    VAL     1      -0.507   2.340  -0.334  0.00  0.00      VALH   5
+ATOM      6 CB   VAL     1       0.000  -0.000   1.530  0.00  0.00      VALH   6
+ATOM      7 CG1  VAL     1      -1.448  -0.154   2.007  0.00  0.00      VALH   7
+ATOM      8 CG2  VAL     1       0.937  -1.067   2.073  0.00  0.00      VALH   8

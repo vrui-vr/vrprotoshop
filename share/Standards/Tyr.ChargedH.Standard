@@ -1,0 +1,15 @@
+HEADER                                                                  ROTA   0
+ATOM      1 N    TYR     1       1.378   0.000  -0.512  0.00  0.00      ROTA   1
+ATOM      2 H    TYR     1       2.100   0.204   0.149  0.00  0.00      PROS   7
+ATOM      2 CA   TYR     1       0.000   0.000   0.000  0.00  0.00      ROTA   2
+ATOM      4 C    TYR     1      -0.773   1.196  -0.547  0.00  0.00      ROTA   4
+ATOM      5 O    TYR     1      -1.466   2.003   0.124  0.00  0.00      ROTA   5
+ATOM      6 CB   TYR     1       0.000   0.000   1.525  0.00  0.00      ROTA   6
+ATOM      9 CG   TYR     1      -1.394   0.000   2.131  0.00  0.00      ROTA   9
+ATOM     10 CD1  TYR     1      -2.267  -1.018   1.870  0.00  0.00      ROTA  10
+ATOM     12 CD2  TYR     1      -1.761   0.999   3.022  0.00  0.00      ROTA  12
+ATOM     14 CE1  TYR     1      -3.564  -0.998   2.445  0.00  0.00      ROTA  14
+ATOM     16 CE2  TYR     1      -3.077   0.960   3.612  0.00  0.00      ROTA  16
+ATOM     18 CZ   TYR     1      -3.975  -0.018   3.292  0.00  0.00      ROTA  18
+ATOM     19 OH   TYR     1      -5.232  -0.016   3.837  0.00  0.00      ROTA  19
+ATOM     20 HH   TYR     1      -5.199   0.409   4.697  0.00  0.00      ROTA  20

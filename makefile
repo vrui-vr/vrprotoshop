@@ -42,7 +42,7 @@ INSTALLDIR := $(shell pwd)
 # subsequent release versions of VR ProtoShop from clobbering each
 # other. The value should be identical to the major.minor version
 # number found in VERSION in the root package directory.
-PACKAGE_VERSION = 4.3
+PACKAGE_VERSION = 4.4
 PACKAGE_NAME = VRProtoShop-$(PACKAGE_VERSION)
 
 # Set up the source directory structure

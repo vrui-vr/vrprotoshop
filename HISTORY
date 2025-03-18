@@ -30,5 +30,7 @@ VR ProtoShop 4.3:
 - Added residue selection and display dialog.
 
 VR ProtoShop 4.4:
-- Bumped Vrui version requirement to 12.3-001
-- Bumped Vrui Collaboration Infrastructure version requirement to 10.1
+- Bumped Vrui version requirement to 13.0-001.
+- Bumped Vrui Collaboration Infrastructure version requirement to 10.2.
+- Adapted to Vrui's new project build sytem and collaboration.
+  infrastructure's new build system.

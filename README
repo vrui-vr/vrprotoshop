@@ -12,8 +12,8 @@ Description
 Requirements
 ============
 
-VR ProtoShop requires Vrui version 12.3 build 001 or newer, and the Vrui
-Collaboration Infrastructure version 10.1 or newer.
+VR ProtoShop requires Vrui version 13.0 build 001 or newer, and the Vrui
+Collaboration Infrastructure version 10.2 or newer.
 
 Installation Guide
 ==================
@@ -44,7 +44,7 @@ accounts.
 2. Change into VR ProtoShop base directory:
    > cd VRProtoShop-<version>
 
-3. If the Vrui version installed in step 0 was not 12.3, or Vrui's
+3. If the Vrui version installed in step 0 was not 13.0, or Vrui's
    installation directory was changed from the default of /usr/local,
    adapt the makefile using a text editor. Change the value of
    VRUI_MAKEDIR close to the beginning of the file as follows:

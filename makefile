@@ -24,7 +24,7 @@
 # matches the default Vrui installation; if Vrui's installation
 # directory was changed during Vrui's installation, the directory below
 # must be adapted.
-VRUI_MAKEDIR := /usr/local/share/Vrui-12.3/make
+VRUI_MAKEDIR := /usr/local/share/Vrui-13.0/make
 
 # Base installation directory for VR ProtoShop. If this is set to the
 # default of $(PWD), VR ProtoShop does not have to be installed to be
@@ -38,17 +38,15 @@ INSTALLDIR := $(shell pwd)
 # Everything below here should not have to be changed
 ########################################################################
 
+PROJECT_NAME = VRProtoShop
+PROJECT_DISPLAYNAME = VR ProtoShop
+
 # Version number for installation subdirectories. This is used to keep
 # subsequent release versions of VR ProtoShop from clobbering each
 # other. The value should be identical to the major.minor version
 # number found in VERSION in the root package directory.
-PACKAGE_VERSION = 4.4
-PACKAGE_NAME = VRProtoShop-$(PACKAGE_VERSION)
-
-# Set up the source directory structure
-PACKAGEROOT := $(shell pwd)
-CONFIGDIR = etc
-RESOURCEDIR = share
+PROJECT_MAJOR = 4
+PROJECT_MINOR = 4
 
 # Include definitions for the system environment and system-provided
 # packages
@@ -66,25 +64,12 @@ else
   HAVE_COLLABORATION = 0
 endif
 
-# Set up installation directory structure:
-EXECUTABLEINSTALLDIR = $(INSTALLDIR)/$(EXEDIR)
-ifeq ($(INSTALLDIR),$(PACKAGEROOT))
-  ETCINSTALLDIR = $(INSTALLDIR)/$(CONFIGDIR)
-  SHAREINSTALLDIR = $(INSTALLDIR)/$(RESOURCEDIR)
-else ifneq ($(findstring $(PACKAGE_NAME),$(INSTALLDIR)),)
-  ETCINSTALLDIR = $(INSTALLDIR)/$(CONFIGDIR)
-  SHAREINSTALLDIR = $(INSTALLDIR)/$(RESOURCEDIR)
-else
-  ETCINSTALLDIR = $(INSTALLDIR)/$(CONFIGDIR)/$(PACKAGE_NAME)
-  SHAREINSTALLDIR = $(INSTALLDIR)/$(RESOURCEDIR)/$(PACKAGE_NAME)
-endif
-
 ########################################################################
 # Specify additional compiler and linker flags
 ########################################################################
 
 # Add base directory to include path:
-EXTRACINCLUDEFLAGS += -I$(PACKAGEROOT)
+EXTRACINCLUDEFLAGS += -I$(PROJECT_ROOT)
 
 CFLAGS += -Wall -pedantic
 
@@ -129,12 +114,12 @@ config-invalidate:
 
 $(DEPDIR)/Configure-Begin:
 	@mkdir -p $(DEPDIR)
-	@echo "---- VR ProtoShop configuration options: ----"
+	@echo "---- $(PROJECT_FULLDISPLAYNAME) configuration options: ----"
 	@echo "Collaborative visualization enabled"
 	@touch $(DEPDIR)/Configure-Begin
 
 $(DEPDIR)/Configure-Install: $(DEPDIR)/Configure-Begin
-	@echo "---- VR ProtoShop installation configuration ----"
+	@echo "---- $(PROJECT_FULLDISPLAYNAME) installation configuration ----"
 	@echo "Installation directory: $(INSTALLDIR)"
 	@echo "Executable directory: $(EXECUTABLEINSTALLDIR)"
 	@echo "Configuration directory: $(ETCINSTALLDIR)"
@@ -143,7 +128,7 @@ $(DEPDIR)/Configure-Install: $(DEPDIR)/Configure-Begin
 	@touch $(DEPDIR)/Configure-Install
 
 $(DEPDIR)/Configure-End: $(DEPDIR)/Configure-Install
-	@echo "---- End of VR ProtoShop configuration options ----"
+	@echo "---- End of $(PROJECT_FULLDISPLAYNAME) configuration options ----"
 	@touch $(DEPDIR)/Configure-End
 
 $(DEPDIR)/config: $(DEPDIR)/Configure-End
@@ -222,6 +207,7 @@ install: $(ALL)
 	@install $(EXECUTABLES) $(EXECUTABLEINSTALLDIR)
 	@install $(COLLABORATIONPLUGINS) $(COLLABORATIONPLUGINS_LIBDIR)
 	@install -d $(ETCINSTALLDIR)
-	@install etc/ProtoShop.cfg $(ETCINSTALLDIR)
+	@install $(PROJECT_ETCDIR)/ProtoShop.cfg $(ETCINSTALLDIR)
+	@install -d $(SHAREINSTALLDIR)
 	@install -d $(SHAREINSTALLDIR)/Standards
-	@install share/VRProtoShop/Standards/* $(SHAREINSTALLDIR)/Standards
+	@install $(PROJECT_SHAREDIR)/Standards/* $(SHAREINSTALLDIR)/Standards

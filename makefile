@@ -24,15 +24,16 @@
 # matches the default Vrui installation; if Vrui's installation
 # directory was changed during Vrui's installation, the directory below
 # must be adapted.
-VRUI_MAKEDIR := /usr/local/share/Vrui-13.0/make
+VRUI_MAKEDIR = /usr/local/share/Vrui-13.0/make
 
 # Base installation directory for VR ProtoShop. If this is set to the
-# default of $(PWD), VR ProtoShop does not have to be installed to be
-# run. Created executables, configuration files, and resources will be
-# installed in the bin, etc, and share directories under the given base
-# directory, respectively. Important note: Do not use ~ as an
-# abbreviation for the user's home directory here; use $(HOME) instead.
-INSTALLDIR := $(shell pwd)
+# default of $(PROJECT_ROOT), VR ProtoShop does not have to be installed
+# to be run. Created executables, configuration files, and resources
+# will be installed in the bin, etc, and share directories under the
+# given base directory, respectively.
+# Important note: Do not use ~ as an abbreviation for the user's home
+# directory here; use $(HOME) instead.
+INSTALLDIR = $(PROJECT_ROOT)
 
 ########################################################################
 # Everything below here should not have to be changed
@@ -46,7 +47,7 @@ PROJECT_DISPLAYNAME = VR ProtoShop
 # other. The value should be identical to the major.minor version
 # number found in VERSION in the root package directory.
 PROJECT_MAJOR = 4
-PROJECT_MINOR = 4
+PROJECT_MINOR = 5
 
 # Include definitions for the system environment and system-provided
 # packages

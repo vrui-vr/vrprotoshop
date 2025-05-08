@@ -1,0 +1,31 @@
+/***********************************************************************
+Config.h - Configuration header for VR ProtoShop.
+Copyright (c) 2025 Oliver Kreylos
+
+This file is part of VR ProtoShop.
+
+VR ProtoShop is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+
+VR ProtoShop is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with VR ProtoShop; if not, write to the Free Software Foundation, Inc.,
+59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+***********************************************************************/
+
+#ifndef VRPROTOSHOP_CONFIG_INCLUDED
+#define VRPROTOSHOP_CONFIG_INCLUDED
+
+#define VRPROTOSHOP_CONFIG_ETCDIR "/usr/local/etc/VRProtoShop-4.5"
+
+#define VRPROTOSHOP_CONFIG_CONFIGFILENAME "ProtoShop.cfg"
+
+#define VRPROTOSHOP_CONFIG_STANDARDSDIR "/usr/local/share/VRProtoShop-4.5/Standards"
+
+#endif

@@ -85,8 +85,11 @@ PACKAGES = MYGLGEOMETRY MYGLSUPPORT MYGLWRAPPERS MYGEOMETRY MYMATH MYCOMM MYTHRE
 # Specify all final targets
 ########################################################################
 
+CONFIGFILES = 
 EXECUTABLES = 
 COLLABORATIONPLUGINS = 
+
+CONFIGFILES += Config.h
 
 EXECUTABLES += $(EXEDIR)/VRProtoShop
 
@@ -116,23 +119,40 @@ config-invalidate:
 $(DEPDIR)/Configure-Begin:
 	@mkdir -p $(DEPDIR)
 	@echo "---- $(PROJECT_FULLDISPLAYNAME) configuration options: ----"
-	@echo "Collaborative visualization enabled"
 	@touch $(DEPDIR)/Configure-Begin
 
-$(DEPDIR)/Configure-Install: $(DEPDIR)/Configure-Begin
+$(DEPDIR)/Configure-Package: $(DEPDIR)/Configure-Begin
+ifneq ($(HAVE_COLLABORATION),0)
+	@echo "Collaborative visualization enabled"
+else
+	@echo "Collaborative visualization disabled"
+endif
+	@touch $(DEPDIR)/Configure-Package
+
+$(DEPDIR)/Configure-Install: $(DEPDIR)/Configure-Package
 	@echo "---- $(PROJECT_FULLDISPLAYNAME) installation configuration ----"
 	@echo "Installation directory: $(INSTALLDIR)"
 	@echo "Executable directory: $(EXECUTABLEINSTALLDIR)"
 	@echo "Configuration directory: $(ETCINSTALLDIR)"
 	@echo "Resource directory: $(SHAREINSTALLDIR)"
+ifneq ($(HAVE_COLLABORATION),0)
 	@echo "Collaboration plug-in directory: $(COLLABORATIONPLUGINS_LIBDIR)"
+endif
 	@touch $(DEPDIR)/Configure-Install
 
 $(DEPDIR)/Configure-End: $(DEPDIR)/Configure-Install
 	@echo "---- End of $(PROJECT_FULLDISPLAYNAME) configuration options ----"
 	@touch $(DEPDIR)/Configure-End
 
-$(DEPDIR)/config: $(DEPDIR)/Configure-End
+Config.h: | $(DEPDIR)/Configure-End
+	@echo "Creating Config.h configuration file"
+	@cp Config.h.template Config.h.temp
+	@$(call CONFIG_SETSTRINGVAR,Config.h.temp,VRPROTOSHOP_CONFIG_ETCDIR,$(ETCINSTALLDIR))
+	@$(call CONFIG_SETSTRINGVAR,Config.h.temp,VRPROTOSHOP_CONFIG_STANDARDSDIR,$(SHAREINSTALLDIR)/Standards)
+	@if ! diff -qN Config.h.temp Config.h > /dev/null ; then cp Config.h.temp Config.h ; fi
+	@rm Config.h.temp
+
+$(DEPDIR)/config: $(DEPDIR)/Configure-End $(CONFIGFILES)
 	@touch $(DEPDIR)/config
 
 ########################################################################
@@ -144,7 +164,7 @@ extraclean:
 
 .PHONY: extrasqueakyclean
 extrasqueakyclean:
-	-rm -rf $(LIBEXT)
+	-rm $(CONFIGFILES)
 
 # Include basic makefile
 include $(VRUI_MAKEDIR)/BasicMakefile
@@ -172,8 +192,6 @@ VRPROTOSHOP_SOURCES = DragBox.cpp \
                       UndoBuffer.cpp \
                       ProteinInteractor.cpp \
                       VRProtoShop.cpp
-
-$(OBJDIR)/VRProtoShop.o: CFLAGS += -DVRPROTOSHOP_CONFIGFILENAME='"$(ETCINSTALLDIR)/ProtoShop.cfg"' -DVRPROTOSHOP_STANDARDSDIR='"$(SHAREINSTALLDIR)/Standards/"'
 
 $(VRPROTOSHOP_SOURCES:%.cpp=$(OBJDIR)/%.o): | $(DEPDIR)/config
 
@@ -206,9 +224,16 @@ install: $(ALL)
 	@install -d $(INSTALLDIR)
 	@install -d $(EXECUTABLEINSTALLDIR)
 	@install $(EXECUTABLES) $(EXECUTABLEINSTALLDIR)
-	@install $(COLLABORATIONPLUGINS) $(COLLABORATIONPLUGINS_LIBDIR)
 	@install -d $(ETCINSTALLDIR)
 	@install $(PROJECT_ETCDIR)/ProtoShop.cfg $(ETCINSTALLDIR)
 	@install -d $(SHAREINSTALLDIR)
 	@install -d $(SHAREINSTALLDIR)/Standards
 	@install $(PROJECT_SHAREDIR)/Standards/* $(SHAREINSTALLDIR)/Standards
+
+installplugins: $(COLLABORATIONPLUGINS)
+ifneq ($(HAVE_COLLABORATION),0)
+	@echo Installing $(PROJECT_DISPLAYNAME)\'s collaboration plug-ins in $(COLLABORATIONPLUGINS_LIBDIR)...
+	@install $(COLLABORATIONPLUGINS) $(COLLABORATIONPLUGINS_LIBDIR)
+else
+	@echo "Collaborative visualization disabled; there are no collaboration plug-ins to install"
+endif

@@ -37,3 +37,7 @@ VR ProtoShop 4.4:
 
 VR ProtoShop 4.5:
 - Adapted makefile to improved Vrui setup.
+- Fixed bracketing of collaboration builds in makefile.
+- Added installplugins target to makefile to separate installing the
+  package itself from installing its collaboration plug-in.
+- Replaced -D configuration with Config.h header file.

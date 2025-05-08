@@ -1,7 +1,7 @@
 /***********************************************************************
 VRProtoShop - Virtual reality version of ProtoShop (will hopefully be
 fully functional at some point).
-Copyright (c) 2002-2024 Oliver Kreylos
+Copyright (c) 2002-2025 Oliver Kreylos
 
 This file is part of VR ProtoShop.
 
@@ -59,6 +59,7 @@ with VR ProtoShop; if not, write to the Free Software Foundation, Inc.,
 #include "UndoBuffer.h"
 #include "ParsePdbFile.h"
 #include "CreateProtein.h"
+#include "Config.h"
 
 // DEBUGGING
 #include <Realtime/Time.h>
@@ -1080,7 +1081,7 @@ void* VRProtoShop::ikThreadMethod(void)
 VRProtoShop::VRProtoShop(int& argc,char**& argv)
 	:Vrui::Application(argc,argv),
 	 clusterPipe(Vrui::openPipe()),
-	 configFile(VRPROTOSHOP_CONFIGFILENAME),
+	 configFile(VRPROTOSHOP_CONFIG_ETCDIR "/" VRPROTOSHOP_CONFIG_CONFIGFILENAME),
 	 psClient(0),
 	 drawDensity(false),densityRenderer(0),densityPalette(0),
 	 undoBuffer(new UndoBuffer),
@@ -1162,7 +1163,7 @@ VRProtoShop::VRProtoShop(int& argc,char**& argv)
 			else if(strcasecmp(extPtr,".pred")==0)
 				{
 				/* Build a protein model: */
-				MD::ReadStandards(VRPROTOSHOP_STANDARDSDIR);
+				MD::ReadStandards(VRPROTOSHOP_CONFIG_STANDARDSDIR);
 				fileChains.push_back(MD::ReadPredictionFile(*ifnIt));
 				}
 			else

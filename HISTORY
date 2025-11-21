@@ -36,6 +36,8 @@ VR ProtoShop 4.4:
   infrastructure's new build system.
 
 VR ProtoShop 4.5:
+- Bumped Vrui version requirement to 14.0-001.
+- Bumped Vrui Collaboration Infrastructure version requirement to 10.3.
 - Adapted makefile to improved Vrui setup.
 - Fixed bracketing of collaboration builds in makefile.
 - Added installplugins target to makefile to separate installing the

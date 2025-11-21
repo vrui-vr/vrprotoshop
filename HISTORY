@@ -43,3 +43,5 @@ VR ProtoShop 4.5:
 - Added installplugins target to makefile to separate installing the
   package itself from installing its collaboration plug-in.
 - Replaced -D configuration with Config.h header file.
+
+VR ProtoShop 4.6:

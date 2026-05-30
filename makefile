@@ -220,7 +220,7 @@ ProtoShopServer: $(call COLLABORATIONPLUGIN_SERVER_TARGET,PROTOSHOP)
 ########################################################################
 
 install: $(ALL)
-	@echo Installing VR ProtoShop in $(INSTALLDIR)...
+	@echo Installing $(PROJECT_FULLDISPLAYNAME) in $(INSTALLDIR)...
 	@install -d $(INSTALLDIR)
 	@install -d $(EXECUTABLEINSTALLDIR)
 	@install $(EXECUTABLES) $(EXECUTABLEINSTALLDIR)
